@@ -1,13 +1,6 @@
-FROM python:3.10-slim-buster
-
-RUN apt update && apt upgrade -y
-RUN apt install git -y
-COPY requirements.txt /requirements.txt
-
-RUN cd /
-RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-WORKDIR /Midukki-RoBoT
-
-COPY . .
-
-CMD python3, ["main.py"]
+FROM python:3.11-slim
+WORKDIR /app
+ADD app/requirements.txt .
+RUN pip install -r requirements.txt
+COPY app/ /app/
+CMD ["python3", "main.py"]
