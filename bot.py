@@ -5,14 +5,14 @@ import pyromod.listen
 from pyrogram import Client
 import sys
 
-from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID
+from config import API_HASH, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL
 
 class Bot(Client):
     def __init__(self):
         super().__init__(
             "Bot",
             api_hash=API_HASH,
-            api_id=APP_ID,
+            api_id="19383278",
             plugins={
                 "root": "plugins"
             },
@@ -36,7 +36,7 @@ class Bot(Client):
                 self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/Mo_Tech_Group For Support")
                 sys.exit()
         try:
-            db_channel = await self.get_chat(CHANNEL_ID)
+            db_channel = await self.get_chat("-1002065818511")
             self.db_channel = db_channel
             test = await self.send_message(chat_id = db_channel.id, text = "Test Message")
             await test.delete()
